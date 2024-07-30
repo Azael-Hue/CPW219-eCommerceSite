@@ -1,6 +1,6 @@
 # CPW - 219 eCommerceSite
 
-This repository contains an ongoing project of an example of an ==eCommerce website== with some **BootStrap** styling, and **database** handling.
+This repository contains an ongoing project of an example of an eCommerce website with some **BootStrap** styling, and **database** handling.
 The user will use Item classes to diplay them to the client side by providing information such as *name, description, price*, and even provide an *image* on a *content table*
 
 ![image](https://github.com/user-attachments/assets/be4bd3a2-3ca6-43cd-9d22-2d36ecbc78e1)

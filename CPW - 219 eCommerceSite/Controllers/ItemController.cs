@@ -20,14 +20,16 @@ namespace CPW___219_eCommerceSite.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(item newItem)
+        public async Task<IActionResult> Create(item newItem)
         {
             if (ModelState.IsValid)
             {
-                _context.Items.Add(newItem); // prepares insert
-                _context.SaveChanges(); // executes pending insert
+                _context.Items.Add(newItem);        // prepares insert
+                // For async code info in the tutorial
+                // https://learn.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro?view=aspnetcore-8.0#asynchronous-code
+                await _context.SaveChangesAsync();  // executes pending insert
+
                 ViewData["Message"] = $"{newItem.Name} was added successfully!";
-                // Show success message on page
                 return View();
             }
 

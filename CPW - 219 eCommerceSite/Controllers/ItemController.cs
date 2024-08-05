@@ -1,6 +1,7 @@
 ﻿using CPW___219_eCommerceSite.Data;
 using CPW___219_eCommerceSite.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CPW___219_eCommerceSite.Controllers
 {
@@ -11,6 +12,15 @@ namespace CPW___219_eCommerceSite.Controllers
         public ItemController(ItemContext context)
         {
             _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            // List<item> items = _context.Items.ToList(); // Get all items from the database
+            List<item> items = await (from item in _context.Items
+                                select item).ToListAsync();
+
+            return View(items); // Show them on the page
         }
 
         [HttpGet]

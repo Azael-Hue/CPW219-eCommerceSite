@@ -45,5 +45,17 @@ namespace CPW___219_eCommerceSite.Controllers
 
             return View(newItem);
         }
+
+        public async IActionResult Edit(int id)
+        {
+            item? tempItem = await _context.Items.FindAsync(id);
+
+            if(tempItem == null)
+            {
+                return NotFound();
+            }
+
+           return View(tempItem);
+        }
     }
 }

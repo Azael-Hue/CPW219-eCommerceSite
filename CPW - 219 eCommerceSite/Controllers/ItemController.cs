@@ -66,6 +66,7 @@ namespace CPW___219_eCommerceSite.Controllers
                 _context.Items.Update(itemModel);
                 await _context.SaveChangesAsync();
 
+                TempData["Message"] = $"{itemModel.Name} was updated successfully!";
                 return RedirectToAction("Index");
             }
 

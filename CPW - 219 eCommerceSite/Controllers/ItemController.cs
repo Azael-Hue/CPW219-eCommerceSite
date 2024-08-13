@@ -48,14 +48,14 @@ namespace CPW___219_eCommerceSite.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            item? tempItem = await _context.Items.FindAsync(id);
+            item? itemToUpdate = await _context.Items.FindAsync(id);
 
-            if(tempItem == null)
+            if(itemToUpdate == null)
             {
                 return NotFound();
             }
 
-           return View(tempItem);
+           return View(itemToUpdate);
         }
 
         [HttpPost]
@@ -71,6 +71,35 @@ namespace CPW___219_eCommerceSite.Controllers
             }
 
             return View(itemModel);
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            item? itemToDelete = await _context.Items.FindAsync(id);
+
+            if( itemToDelete == null)
+            {
+                return NotFound();
+            }
+
+            return View(itemToDelete);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            item itemToDelete = await _context.Items.FindAsync(id);
+
+            if (itemToDelete != null)
+            {
+                _context.Items.Remove(itemToDelete);
+                await _context.SaveChangesAsync();
+                TempData["Message"] = itemToDelete.Name + " was deleted successfully!";
+                return RedirectToAction("Index");
+            }
+
+            TempData["Message"] = "This item was already deleted!";
+            return RedirectToAction("Index");
         }
     }
 }

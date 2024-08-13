@@ -101,5 +101,17 @@ namespace CPW___219_eCommerceSite.Controllers
             TempData["Message"] = "This item was already deleted!";
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            item? detailedItem = await _context.Items.FindAsync(id);
+
+            if( detailedItem == null)
+            {
+                return NotFound();
+            }
+
+            return View(detailedItem);
+        }
     }
 }

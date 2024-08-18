@@ -1,4 +1,4 @@
-﻿@model IEnumerable<item>
+﻿@model ItemCatalogViewModel
 
 @{
     ViewData["Title"] = "Item Catalog";
@@ -17,25 +17,25 @@
 <p>
     <a asp-action="Create" asp-controller="Item">Create Item</a>
 </p>
-@if (Model.Count() != 0)
+@if (Model.Items.Count != 0)
 {
     <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.ItemId)
+                    @Html.DisplayNameFor(model => model.Items[0].ItemId)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.Items[0].Name)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Price)
+                    @Html.DisplayNameFor(model => model.Items[0].Price)
                 </th>
                 <th></th>
             </tr>
         </thead>
     <tbody>
-        @foreach (item item in Model) {
+        @foreach (item item in Model.Items) {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.ItemId)
@@ -59,4 +59,9 @@
 else
 {
     <h2>There are no items in this page.</h2>
+}
+
+@for (int i = 1; i <= Model.LastPage; i++)
+{
+    <p>@i</p>
 }

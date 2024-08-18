@@ -5,7 +5,7 @@ namespace CPW___219_eCommerceSite.Models
     public class Member
     {
         [Key]
-        private int MemberId { get; set; }
+        public int MemberId { get; set; }
 
         public string Email { get; set; }
 

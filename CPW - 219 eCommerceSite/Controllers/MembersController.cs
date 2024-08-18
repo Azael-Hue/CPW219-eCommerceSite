@@ -34,6 +34,8 @@ namespace CPW___219_eCommerceSite.Controllers
                 _itemContext.Members.Add(newMember);
                 await _itemContext.SaveChangesAsync();
 
+                LogUserIn(newMember.Email);
+
                 // Redirect to home page
                 return RedirectToAction("Index", "Home");
             }
@@ -60,7 +62,7 @@ namespace CPW___219_eCommerceSite.Controllers
                 // If exists, send to homepage
                 if (m != null)
                 {
-                    HttpContext.Session.SetString("Email", loginModel.Email);
+                    LogUserIn(loginModel.Email);
                     return RedirectToAction("Index", "Home");
                 }
 
@@ -68,6 +70,17 @@ namespace CPW___219_eCommerceSite.Controllers
             }
             // If no record matches or ModelState is invalid, display error
             return View(loginModel);
+        }
+
+        private void LogUserIn(string email)
+        {
+            HttpContext.Session.SetString("Email", email);
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

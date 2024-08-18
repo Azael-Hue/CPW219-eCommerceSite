@@ -50,6 +50,7 @@
                     <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.ItemId">Edit</a>
                     <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.ItemId">Detials</a>
                     <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ItemId">Delete</a>
+                    <a class="btn btn-success" asp-controller="Cart" asp-action="Add" asp-route-id="@item.ItemId">Add to Cart</a>
                 </td>
             </tr>
         }

@@ -27,4 +27,17 @@ namespace CPW___219_eCommerceSite.Models
 
         // Todo: add country of origin
     }
+
+    /// <summary>
+    /// A single Item that has been added to the users
+    /// shopping cart cookie
+    /// </summary>
+    public class CartItemViewModel
+    {
+        public int ItemId { get; set; }
+
+        public string Name { get; set; }
+
+        public double Price { get; set; }
+    }
 }

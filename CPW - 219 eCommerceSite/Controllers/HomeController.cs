@@ -18,7 +18,7 @@ namespace CPW___219_eCommerceSite.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult TestPage()
         {
             return View();
         }

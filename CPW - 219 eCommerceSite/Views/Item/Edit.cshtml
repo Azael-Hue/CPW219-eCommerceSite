@@ -24,6 +24,9 @@
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -31,8 +34,10 @@
     </div>
 </div>
 
+<br />
+
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-secondary btn-sm" asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
